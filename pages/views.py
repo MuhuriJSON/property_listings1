@@ -8,7 +8,7 @@ from listings.choices import price_choices, bedroom_choices, state_choices
 
 # Create your views here.
 def index(request):
-    listings = Listing.objects.order_by('-list_data').filter(is_published=True)[:3]
+    listings = Listing.objects.order_by('-listing_date').filter(is_published=True)[:3]
     
     context ={
         'listings': listings,
@@ -22,11 +22,11 @@ def index(request):
 def about(request):
     realtors=Realtor.objects.order_by('-hire_date')
 
-    mvp_realtors=Realtor.objects.all().filter(is_mvp=True)
+    mvr_realtors=Realtor.objects.all().filter(is_mvr=True)
 
     context= {
         'realtors':realtors,
-        'mvp_realtors':mvp_realtors
+        'mvr_realtors':mvr_realtors
     }
 
 

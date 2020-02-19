@@ -8,7 +8,7 @@ from .choices import price_choices, bedroom_choices, state_choices
 
 
 def index(request):
-    listings = Listing.objects.order_by('-list_data').filter(is_published=True)
+    listings = Listing.objects.order_by('-listing_date').filter(is_published=True)
 
     paginator = Paginator(listings, 3)
     page = request.GET.get('page')
@@ -20,7 +20,7 @@ def index(request):
     return render(request, 'listings/listings.html', context)
 
 
-def lisitng(request, listing_id):
+def listing(request, listing_id):
     listing=get_object_or_404(Listing, pk=listing_id)
 
     context={
@@ -31,7 +31,7 @@ def lisitng(request, listing_id):
 
 
 def search(request):
-    queryset_list=Listing.objects.order_by('-list_data')
+    queryset_list=Listing.objects.order_by('-listing_date')
 
     #keywords
     if 'keywords' in request.GET:
