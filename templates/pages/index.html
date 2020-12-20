@@ -1,97 +1,329 @@
 {% extends 'base.html' %}
 {% load humanize %}
+{% load static %}
 {% block title %} | Welcome {% endblock %}
 {% block content%}
+<style>
+  /*Services section styles*/
 
-<!-- Showcase -->
-<section id="showcase">
-  <div class="container text-center">
-    <div class="home-search p-5">
-      <div class="overlay p-5">
-        <h1 class="display-4 mb-4">
-          Property Searching Just Got So Easy
-        </h1>
-        <p class="lead">
-         Residences can be classified by and how they are connected to neighbouring residences and land. Different types of housing tenure can be used for the same physical type. For example, connected residences might be owned by a single entity and leased out, or owned separately with an agreement covering the relationship between units and common areas and concerns.
-        </p>
-        <div class="search">
-          <form action="{% url 'search' %}">
-            <!-- Form Row 1 -->
-            <div class="form-row">
-              <div class="col-md-4 mb-3">
-                <label class="sr-only">Keywords</label>
-                <input
-                  type="text"
-                  name="keywords"
-                  class="form-control"
-                  placeholder="Keyword (Pool, Garage, etc)"
-                />
-              </div>
+.section-title {
+    margin-bottom: 38px
+}
 
-              <div class="col-md-4 mb-3">
-                <label class="sr-only">City</label>
-                <input
-                  type="text"
-                  name="city"
-                  class="form-control"
-                  placeholder="City"
-                />
-              </div>
-<!-- 
-              <div class="col-md-4 mb-3">
-                <label class="sr-only">State</label>
-                <select name="state" class="form-control">
-                  <option selected="true" disabled="disabled"
-                    >State (All)</option>
-                    {% for key,value in state_choices.items %}
-                    <option value="{{ key }}">{{ value }}</option>
-                    {% endfor %}
-                  
-                </select>
-              </div> -->
-            </div>
-            <!-- Form Row 2 -->
-            <div class="form-row">
-              <div class="col-md-6 mb-3">
-                <label class="sr-only">Bedrooms</label>
-                <select name="bedrooms" class="form-control">
-                  <option selected="true" disabled="disabled"
-                    >Bedrooms (All)</option
-                  >
-                  {% for key,value in bedroom_choices.items %}
-                    <option value="{{key}}">{{value}}</option>
-                    {% endfor %}
-                </select>
-              </div>
-              <div class="col-md-6 mb-3">
-                <select name="price" class="form-control" id="type">
-                  <option selected="true" disabled="disabled"
-                    >Max Price (Any)</option
-                  >
-                  {% for key,value in price_choices.items %}
-                    <option value="{{key}}">{{value}}</option>
-                    {% endfor %}
-                </select>
-              </div>
-            </div>
-            <button class="btn btn-secondary btn-block mt-4" type="submit">
-              Submit form
-            </button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<br>
+.shadow,
+.subscription-wrapper {
+    box-shadow: 0px 15px 39px 0px rgba(8, 18, 109, 0.1) !important
+}
 
-<!-- alerts -->
-{% include 'partials/_alert.html' %}
+.icon-primary {
+    color: #062caf
+}
+
+.icon-bg-circle {
+    position: relative
+}
+
+.icon-lg {
+    font-size: 50px
+}
+
+.icon-bg-circle::before {
+    z-index: 1;
+    position: relative
+}
+
+.icon-bg-primary::after {
+    background: #062caf !important
+}
+
+.icon-bg-circle::after {
+    content: '';
+    position: absolute;
+    width: 68px;
+    height: 68px;
+    top: -35px;
+    left: 15px;
+    border-radius: 50%;
+    background: inherit;
+    opacity: .1
+}
+
+
+.icon-bg-yellow::after {
+    background: #f6a622 !important
+}
+
+.icon-bg-purple::after {
+    background: #7952f5
+}
+
+.icon-yellow {
+    color: #f6a622
+}
+
+.icon-purple {
+    color: #7952f5
+}
+
+.icon-cyan {
+    color: #02d0a1
+}
+
+.icon-bg-cyan::after {
+    background: #02d0a1
+}
+
+.icon-bg-red::after {
+    background: #ff4949
+}
+
+.icon-red {
+    color: #ff4949
+}
+
+.icon-bg-green::after {
+    background: #66cc33
+}
+
+.icon-green {
+    color: #66cc33
+}
+
+.icon-bg-orange::after {
+    background: #ff7c17
+}
+
+.icon-orange {
+    color: #ff7c17
+}
+
+.icon-bg-blue::after {
+    background: #3682ff
+}
+
+.icon-blue {
+    color: #3682ff
+}
+
+/*Our partners section styles*/
+
+h2{
+  text-align:center;
+  padding: 20px;
+}
+
+.slick-slide {
+    margin: 0px 20px;
+}
+
+.slick-slide img {
+    width: 100%;
+}
+
+.slick-slider
+{
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+            user-select: none;
+    -webkit-touch-callout: none;
+    -khtml-user-select: none;
+    -ms-touch-action: pan-y;
+        touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.slick-list
+{
+    position: relative;
+    display: block;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+.slick-list:focus
+{
+    outline: none;
+}
+.slick-list.dragging
+{
+    cursor: pointer;
+    cursor: hand;
+}
+
+.slick-slider .slick-track,
+.slick-slider .slick-list
+{
+    -webkit-transform: translate3d(0, 0, 0);
+       -moz-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+         -o-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+}
+
+.slick-track
+{
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block;
+}
+.slick-track:before,
+.slick-track:after
+{
+    display: table;
+    content: '';
+}
+.slick-track:after
+{
+    clear: both;
+}
+.slick-loading .slick-track
+{
+    visibility: hidden;
+}
+
+.slick-slide
+{
+    display: none;
+    float: left;
+    height: 100%;
+    min-height: 1px;
+}
+[dir='rtl'] .slick-slide
+{
+    float: right;
+}
+.slick-slide img
+{
+    display: block;
+}
+.slick-slide.slick-loading img
+{
+    display: none;
+}
+.slick-slide.dragging img
+{
+    pointer-events: none;
+}
+.slick-initialized .slick-slide
+{
+    display: block;
+}
+.slick-loading .slick-slide
+{
+    visibility: hidden;
+}
+.slick-vertical .slick-slide
+{
+    display: block;
+    height: auto;
+    border: 1px solid transparent;
+}
+.slick-arrow.slick-hidden {
+    display: none;
+}
+
+
+/*style for footer section*/
+
+
+ @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+ figure img {
+     width: calc(40px + (70 - 40) * ((100vw - 360px) / (1600 - 360))) !important;
+ }
+
+ h5 {
+     font-size: calc(14px + (18 - 14) * ((100vw - 360px) / (1600 - 360))) !important
+ }
+
+ button {
+     font-size: calc(13px + (16 - 13) * ((100vw - 360px) / (1600 - 320))) !important;
+     border-radius: 0 !important;
+     padding-left: calc(20px + (28 - 20) * ((100vw - 360px) / (1600 - 360))) !important;
+     padding-right: calc(20px + (28 - 20) * ((100vw - 360px) / (1600 - 360))) !important;
+     padding-top: calc(10px + (12 - 10) * ((100vw - 360px) / (1600 - 360))) !important;
+     padding-bottom: calc(10px + (12 - 10) * ((100vw - 360px) / (1600 - 360))) !important;
+     background-color: #383431 !important;
+     border: none !important
+ }
+
+ button:focus {
+     -moz-box-shadow: none !important;
+     -webkit-box-shadow: none !important;
+     box-shadow: none !important;
+     outline-width: 0
+ }
+
+
+ .row-2 li:first-child {
+     font-size: 18px !important;
+     font-weight: bold;
+     margin-bottom: 20px !important;
+     text-transform: uppercase
+ }
+
+ footer {
+     overflow-x: hidden !important;
+     background-color: #EFEFF9 !important;
+     color: #546E7A !important
+ }
+
+
+ .social {
+     position: relative;
+     left: -10px
+ }
+
+
+
+ .line {
+     background-color: #ccc !important;
+     width: 92%
+ }
+
+ .active-1 span:hover {
+     color: white !important
+ }
+
+ .third-row {
+     background-color: white !important;
+     border-radius: 50px !important;
+     padding: 0.8vh 2.7vh 0.8vh 2.7vh
+ }
+
+ .third-row li {
+     justify-content: space-between !important;
+     border-radius: 50px;
+     font-size: calc(9px + (12 - 9) * ((100vw - 360px) / (1600 - 360))) !important
+ }
+
+ li.active-1 {
+     padding: 1.7vh !important
+ }
+
+ .active-1 {
+     background-color: #42443E !important;
+     font-size: 2vw !important;
+     font-weight: bold
+ }
+
+ fig-caption {
+     font-size: calc(10px + (14 - 10) * ((100vw - 360px) / (1600 - 360))) !important;
+     color: white;
+     text-align: center !important;
+     justify-content: center !important;
+     justify-self: center !important
+ }
+
+</style>
 
 <!-- Listings -->
-<section id="listings" class="py-5">
-  <div class="container">
-    <h3 class="text-center mb-3">Latest Listings</h3>
+<div class="container" style="padding: 80px;" style="background-color: #888888">
+  <h2 class="text-center mb-3" style="font-family: 'Andika New Basic', sans-serif;">Latest Listings</h2>
     <div class="row">
 
       {% if listings %}
@@ -99,89 +331,118 @@
        
       <!-- Listing 1 -->
       <div class="col-md-6 col-lg-4 mb-4">
-          <div class="card listing-preview">
-            <img class="card-img-top" src="{{listing.photo_main.url}}" alt="" />
+          <div class="card listing-preview"  style="background-color: #f9f9f9">
+            <img class="card-img-top" src="{{listing.photo_main.url}}" alt="" style="height: 200px;"/>
             <div class="card-img-overlay">
-              <h2>
-                <span class="badge badge-secondary text-white">${{ listing.price | intcomma}}</span>
-              </h2>
+              <h4 style="font-family: 'JetBrains Mono', monospace; font-size: 18px; font-weight: bold;">
+
+              </h4>
             </div>
+
             <div class="card-body">
-              <div class="listing-heading text-center">
-                <h4 class="text-primary">{{listing.title}}</h4>
-                <p>
-                  <i class="fas fa-map-marker text-secondary"></i>{{listing.city}} {{listing.state}}, {{listing.zipcode}}
-                </p>
+                <span class="badge badge-pill badge-primary" style="background-color: #31326f"> For {{ listing.rent_or_sale }}</span>
+                <span class="badge badge-pill badge-primary" style="background-color: #31326f"> KES {{ listing.price | intcomma}}</span>
+                <hr>
+              <div class="listing-heading text-center" style="height: 60px;">
+                <h4 style="font-family: 'JetBrains Mono', monospace; font-size: 15px; font-weight: bold;">{{listing.title}}</h4>
+                <p style="font-family: 'JetBrains Mono', monospace; font-size: 12px; text-align: center;"><i class="fas fa-map-marker text-secondary"></i> {{ listing.address }}, {{listing.town }} </p>
               </div>
-              <hr />
-              <div class="row py-2 text-secondary">
+              <hr/>
+              <div class="row py-2 text-secondary" style="height: 40px; font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: bold;">
                 <div class="col-6">
                   <i class="fas fa-th-large"></i> Sqft: {{listing.sqft}}
                 </div>
                 <div class="col-6"><i class="fas fa-car"></i> Garage: {{listing.garage}}</div>
               </div>
-              <div class="row py-2 text-secondary">
+              <div class="row py-2 text-secondary" style="height: 40px; font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: bold;">
                 <div class="col-6"><i class="fas fa-bed"></i> Bedrooms: {{listing.bedrooms}}</div>
                 <div class="col-6"><i class="fas fa-bath"></i> Bathrooms: {{listing.bathrooms}}</div>
               </div>
-              <hr />
-              <div class="row py-2 text-secondary">
-                <div class="col-6"><i class="fas fa-user"></i>{{listing.realtor}}</div>
-              </div>
-              <div class="row text-secondary pb-2">
-                <div class="col-6"><i class="fas fa-clock"></i> {{ listing.list_data | timesince }}</div>
-              </div>
-              <hr />
-              <a href="{% url 'listing' listing.id %}" class="btn btn-primary btn-block"
-                >More Info</a
-              >
+              <hr/>
+              <a href="{% url 'listing' listing.id %}" class="btn btn-primary btn-block" style="background-color: #31326f;">More Info</a>
             </div>
           </div>
         </div>
-  
-
       {% endfor %}
       {% else %}
       <div class="col-md-12">
       <p>No Listings Available</p>
       </div>
       {% endif %}
-
-
     </div>
   </div>
+
+<!-- Services -->
+<section style="font-family: 'Andika New Basic', sans-serif; margin-top: 10px; padding-top: 0px;">
+<div class="container" >
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <h2 class="section-title" style="font-weight: bold;"> Services </h2>
+        </div>
+        <div class="col-lg-3 col-sm-6 mb-4">
+            <div class="card border-0 shadow rounded-xs pt-5" style="height: 405px; background-color: #f9f9f9;">
+                <div class="card-body"> <i class="fa fa-search-plus icon-lg icon-green icon-bg-green icon-bg-circle mb-3"></i>
+                    <h4 class="mt-4 mb-3" style="font-weight: bold; font-size: 25px; text-align: left;">Listing & Searching</h4>
+                    <p style="font-size: 15px; font-family: 'JetBrains Mono', monospace;">You are looking for a house?” or “Really, an apartment for you, your spouse and your kids?!” why go house hunting?</p>
+                </div>
+            </div>
+        </div>        
+        <div class="col-lg-3 col-sm-6 mb-4">
+            <div class="card border-0 shadow rounded-xs pt-5" style="height: 405px; background-color: #f9f9f9;">
+                <div class="card-body"> <i class="far fa-building icon-lg icon-primary icon-bg-primary icon-bg-circle mb-3 bi bi-building"></i>
+                    <h4 class="mt-4 mb-3" style="font-weight: bold; font-size: 25px; text-align: left;">Development & Valuation</h4>
+                    <p style="font-size: 15px; font-family: 'JetBrains Mono', monospace;">Get state of the art property design with us. Also it is important to get the correct valuation from a reliable valuer</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-6 mb-4">
+            <div class="card border-0 shadow rounded-xs pt-5" style="height: 405px; background-color: #f9f9f9;">
+                <div class="card-body"> <i class="fa fa-users icon-lg icon-yellow icon-bg-yellow icon-bg-circle mb-3"></i>
+                    <h4 class="mt-4 mb-3" style="font-weight: bold; font-size: 25px; text-align: left;"> Tenancy Management </h4>
+                    <p style="font-size: 15px; font-family: 'JetBrains Mono', monospace;">Cut your hustles by half and also give your tenants value for all their rental payments and a comfortable stay</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-6 mb-4">
+            <div class="card border-0 shadow rounded-xs pt-5" style="height: 405px; background-color: #f9f9f9;">
+                <div class="card-body"> <i class="fa fa-comments icon-lg icon-red icon-bg-red icon-bg-circle mb-3"></i>
+                    <h4 class="mt-4 mb-3" style="font-weight: bold; font-size: 25px; text-align: left;">Consultancy Services</h4>
+                    <p style="font-size: 15px; font-family: 'JetBrains Mono', monospace;">Get to know the best ways to spruce up your property investments to make you a little less claustrophobic and a little more trendy</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </section>
 
-<section id="services" class="py-5 bg-secondary text-white">
-  <div class="container">
-    <div class="row text-center">
-      <div class="col-md-4">
-        <i class="fas fa-comment fa-4x mr-4"></i>
-        <hr />
-        <h3>Consulting Services</h3>
-        <p>
-Real estate is "property consisting of land and the buildings on it, along with its natural resources such as crops, minerals or water; immovable property of this nature; an interest vested in this (also) an item of real property, (more generally) buildings or housing in general
-        </p>
-      </div>
-      <div class="col-md-4">
-        <i class="fas fa-home fa-4x mr-4"></i>
-        <hr />
-        <h3>Propery Management</h3>
-        <p>
-          Residential real estate may contain either a single family or multifamily structure that is available for occupation or for non-business purposes
-        </p>
-      </div>
-      <div class="col-md-4">
-        <i class="fas fa-suitcase fa-4x mr-4"></i>
-        <hr />
-        <h3>Renting & Selling</h3>
-        <p>
-         Residences can be classified by and how they are connected to neighbouring residences and land. Different types of housing tenure can be used for the same physical type. For example, connected residences might be owned by a single entity and leased out, or owned separately with an agreement covering the relationship between units and common areas and concerns
-        </p>
-      </div>
-    </div>
-  </div>
+<!--  Partners/Clients Section-->
+<style>
+    .rounded-img {
+        border: 1px white;
+        border-radius: 50%;
+    }
+</style>
+<section style="background-color: #31326f; height: 300px; margin-top: 50px;">
+  <div class="container" style="">
+  <h2 style="font-family: 'Andika New Basic', sans-serif; font-weight: bold; color: white;"> Our Partners </h2>
+   <section class="customer-logos slider">
+      <div class="slide logo-img-size"><img class="rounded-img" src="https://images-platform.99static.com/z4irsodgnOzCN4TBA3beQPgjvSw=/500x500/top/smart/99designs-contests-attachments/43/43119/attachment_43119376"></div>
+      <div class="slide logo-img-size"><img class="rounded-img"  src="https://i2.wp.com/eacpages.com/wp-content/uploads/2019/10/picture-37376.jpeg?fit=180%2C180&ssl=1"></div>
+      <div class="slide logo-img-size"><img class="rounded-img"  src="https://vaal.co.ke/wp-content/uploads/2019/04/vaal-v2.png"></div>
+      <div class="slide logo-img-size"><img class="rounded-img"  src="https://scontent.fnbo2-1.fna.fbcdn.net/v/t1.0-9/116582481_3172051662915205_6965537528532366916_o.jpg?_nc_cat=110&ccb=2&_nc_sid=09cbfe&_nc_ohc=mAfG35yqO40AX8QrSiW&_nc_ht=scontent.fnbo2-1.fna&oh=acb333d6fc17495c57098a193b7972c7&oe=5FFFBFED"></div>
+      <div class="slide logo-img-size"><img class="rounded-img"  src="https://i2.wp.com/eacpages.com/wp-content/uploads/2019/10/picture-37376.jpeg?fit=180%2C180&ssl=1"></div>
+      <div class="slide logo-img-size"><img class="rounded-img"  src="https://vaal.co.ke/wp-content/uploads/2019/04/vaal-v2.png"></div>
+      <div class="slide logo-img-size"><img class="rounded-img"  src="https://images-platform.99static.com/z4irsodgnOzCN4TBA3beQPgjvSw=/500x500/top/smart/99designs-contests-attachments/43/43119/attachment_43119376"></div>
+      <div class="slide logo-img-size"><img class="rounded-img"  src="https://i2.wp.com/eacpages.com/wp-content/uploads/2019/10/picture-37376.jpeg?fit=180%2C180&ssl=1"></div>
+      <div class="slide logo-img-size"><img class="rounded-img"  src="https://vaal.co.ke/wp-content/uploads/2019/04/vaal-v2.png"></div>
+      <div class="slide logo-img-size"><img class="rounded-img"  src="https://images-platform.99static.com/z4irsodgnOzCN4TBA3beQPgjvSw=/500x500/top/smart/99designs-contests-attachments/43/43119/attachment_43119376"></div>
+      <div class="slide logo-img-size"><img class="rounded-img"  src="https://i2.wp.com/eacpages.com/wp-content/uploads/2019/10/picture-37376.jpeg?fit=180%2C180&ssl=1"></div>
+      <div class="slide logo-img-size"><img class="rounded-img" src="https://scontent.fnbo2-1.fna.fbcdn.net/v/t1.0-9/116582481_3172051662915205_6965537528532366916_o.jpg?_nc_cat=110&ccb=2&_nc_sid=09cbfe&_nc_ohc=mAfG35yqO40AX8QrSiW&_nc_ht=scontent.fnbo2-1.fna&oh=acb333d6fc17495c57098a193b7972c7&oe=5FFFBFED"></div>           
+   </section>
+</div>
 </section>
+
+
 
 {% endblock %}
  

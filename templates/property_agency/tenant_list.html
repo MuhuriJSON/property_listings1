@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<div align="center" class="float-center" style="margin-right: 20px; margin-top: 150px;">
+<h3>Tenants</h3>
+<button type=""><a href="{% url 'create_tenant' %}">Create New Tenant</a></button>
+<table
+  data-toggle="table"
+  data-search="true"
+  data-show-columns="true" style="margin-top: 35px;  width: 1000px; margin-left: 50px;">
+  <thead>
+    <tr class="bg-success active">
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+  	{% for tenant in tenants %}
+  		<tr>
+	      <td>{{ tenant.first_name }}</td>
+	      <td>{{ tenant.last_name }}</td>
+	      <td>{{ tenant.email }}</td>
+	      <td>{{ tenant.phone }}</td>
+	      <td><a href="{% url 'tenant_detail' tenant.id %}"><span class="badge badge-primary badge-pill">View</span></a></td>
+	  	</tr>
+	{% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}

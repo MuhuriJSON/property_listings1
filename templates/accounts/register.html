@@ -1,14 +1,13 @@
 {% extends 'base.html' %}
 {% block title %} | Register Account {% endblock %}
 {% block content %}
-<section id="register" class="bg-light py-5">
+<section id="register" class="bg-light py-5" style="margin-top: 150px; background-color: #f9f9f9; border-radius: 5px; font-family: 'JetBrains Mono', monospace;">
     <div class="container">
       <div class="row">
         <div class="col-md-6 mx-auto">
           <div class="card">
-            <div class="card-header bg-primary text-white">
-              <h4>
-                <i class="fas fa-user-plus"></i> Register </h4>
+            <div class="card-header bg-primary text-white" style="background-color: #31326f !important;">
+              <h4><i class="fas fa-user-plus"></i> Register </h4>
             </div>
             <div class="card-body">
                 <!--Alerts-->
@@ -24,7 +23,7 @@
                   <input type="text" name="last_name" class="form-control" required>
                 </div>
                 <div class="form-group">
-                  <label for="username">Username</label>
+                  <label for="username">User Name</label>
                   <input type="text" name="username" class="form-control" required>
                 </div>
                 <div class="form-group">
@@ -39,7 +38,7 @@
                   <label for="password">Confirm Password</label>
                   <input type="password" name="password2" class="form-control" required>
                 </div>
-                <input type="submit" value="Register" class="btn btn-secondary btn-block">
+                <input type="submit" value="Register" class="btn btn-secondary btn-block" style="background-color: #31326f !important;">
               </form>
             </div>
           </div>

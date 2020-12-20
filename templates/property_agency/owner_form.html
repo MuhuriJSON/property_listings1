@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<div style="  margin: auto; width: 50%; border: 1px solid; padding: 40px; border-radius: 10px; margin-top: 200px;">
+<h4><i class="fas fa-user-plus"></i> Add New Owner </h4>
+<form method="POST" action="{% url 'create_owner' %}">
+  {% csrf_token %}
+  <div class="form-group">
+    <label for="first_name">First Name</label>
+    <input type="text" class="form-control" id="first_name" placeholder="" name="first_name">
+  </div>
+  <div class="form-group">
+    <label for="last_name">Last Name</label>
+    <input type="text" class="form-control" id="last_name" placeholder="" name="last_name">
+  </div>
+  <div class="form-group">
+    <label for="trading_name">Trading Name</label>
+    <input type="text" class="form-control" id="trading_name" placeholder="" name="trading_name">
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="email">Email</label>
+      <input type="email" class="form-control" id="email" placeholder="" name="email">
+    </div>
+    <div class="form-group col-md-2">
+      <label for="phonenumber">Phone</label>
+      <input type="text" class="form-control" id="phonenumber" style="width: 200px;" name="phone">
+    </div> 
+  </div> 
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="address">Address</label>
+      <input type="text" class="form-control" id="address" name="address">
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Create Owner</button>
+</form>
+</div>
+{% endblock %}

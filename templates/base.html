@@ -2,23 +2,134 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{% static 'css/all.css' %}" />
+
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"/>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     <!-- Custom -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    
     <!--light box-->
-    <link rel="stylesheet" href="{% static 'css/lightbox.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/lightbox.min.css' %}"/>
 
-    <title> GRANT COURT VENTURES {% block title %}{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Andika+New+Basic:wght@700&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100&display=swap" rel="stylesheet">
+    
+    <link href="https://unpkg.com/bootstrap-table@1.18.0/dist/bootstrap-table.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <title> Grant Court Ventures {% block title %}{% endblock %}</title>
+    <style>
+
+
+/*style for footer section*/
+
+ @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+ figure img {
+     width: calc(40px + (70 - 40) * ((100vw - 360px) / (1600 - 360))) !important;
+ }
+
+ h5 {
+     font-size: calc(14px + (18 - 14) * ((100vw - 360px) / (1600 - 360))) !important
+ }
+
+ button {
+     font-size: calc(13px + (16 - 13) * ((100vw - 360px) / (1600 - 320))) !important;
+     border-radius: 0 !important;
+     padding-left: calc(20px + (28 - 20) * ((100vw - 360px) / (1600 - 360))) !important;
+     padding-right: calc(20px + (28 - 20) * ((100vw - 360px) / (1600 - 360))) !important;
+     padding-top: calc(10px + (12 - 10) * ((100vw - 360px) / (1600 - 360))) !important;
+     padding-bottom: calc(10px + (12 - 10) * ((100vw - 360px) / (1600 - 360))) !important;
+     background-color: #383431 !important;
+     border: none !important
+ }
+
+ button:focus {
+     -moz-box-shadow: none !important;
+     -webkit-box-shadow: none !important;
+     box-shadow: none !important;
+     outline-width: 0
+ }
+
+
+ .row-2 li:first-child {
+     font-size: 18px !important;
+     font-weight: bold;
+     margin-bottom: 20px !important;
+     text-transform: uppercase
+ }
+
+ footer {
+     overflow-x: hidden !important;
+     background-color: #EFEFF9 !important;
+     color: #546E7A !important
+ }
+
+
+ .social {
+     position: relative;
+     left: -10px
+ }
+
+
+
+ .line {
+     background-color: #ccc !important;
+     width: 92%
+ }
+
+ .active-1 span:hover {
+     color: white !important
+ }
+
+ .third-row {
+     background-color: white !important;
+     border-radius: 50px !important;
+     padding: 0.8vh 2.7vh 0.8vh 2.7vh
+ }
+
+ .third-row li {
+     justify-content: space-between !important;
+     border-radius: 50px;
+     font-size: calc(9px + (12 - 9) * ((100vw - 360px) / (1600 - 360))) !important
+ }
+
+ li.active-1 {
+     padding: 1.7vh !important
+ }
+
+ .active-1 {
+     background-color: #42443E !important;
+     font-size: 2vw !important;
+     font-weight: bold
+ }
+
+ fig-caption {
+     font-size: calc(10px + (14 - 10) * ((100vw - 360px) / (1600 - 360))) !important;
+     color: white;
+     text-align: center !important;
+     justify-content: center !important;
+     justify-self: center !important
+ }
+    </style>
   </head>
-  <body>
-    <!-- topbar -->
-    {% include 'partials/_topbar.html' %}
+
+  <body style="background-color: white;">
 
     <!-- nav bar -->
     {% include 'partials/_navbar.html' %}
@@ -33,5 +144,60 @@
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
     <script src="{% static 'js/lightbox.min.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
+
+     <script src="https://unpkg.com/bootstrap-table@1.18.0/dist/bootstrap-table.min.js"></script>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+
+    <script>
+      // carousel js
+        $(document).ready(function() {
+            $('.carousel').carousel({
+              interval: 1200
+            })
+          });
+
+        // Our partners js
+        $(document).ready(function(){
+        $('.customer-logos').slick({
+            slidesToShow: 6,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 1500,
+            arrows: false,
+            dots: false,
+            pauseOnHover: false,
+            responsive: [{
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 4
+                }
+            }, {
+                breakpoint: 520,
+                settings: {
+                    slidesToShow: 3
+                }
+            }]
+        });
+    });
+
+
+             $(document).ready(function(){
+        $('.third-row li.active-1').find('span').css('color' , 'white');
+        $(' .third-row li').click(function() {
+        $(' .third-row li.active-1').find('span').css('color' , 'black');
+        $(' .third-row li.active-1').removeClass('active-1');
+        $(' .third-row li.active-1').addClass('text-dark');
+        $(this).addClass('active-1');
+        $(' .third-row li.active-1').find('span').css('color' , 'white');
+        });
+
+        });   
+    </script>
+
   </body>
 </html>

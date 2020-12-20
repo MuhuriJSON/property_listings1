@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<div align="center">
+  <h3>Units</h3>
+  <button type=""><a href="{% url 'create_unit' %}">Create New Unit</a></button>
+<table
+  data-toggle="table"
+  data-search="true"
+  data-show-columns="true" style="margin-top: 35px;  width: 1500px; margin-left: 50px;">
+  <thead>
+    <tr class="bg-success active">
+      <th>Unit code</th>
+      <th>Property</th>
+      <th>Rental rate</th>
+      <th>Recurrent charges</th>
+      <th>Lease status</th>
+      <th>Description</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+  	{% for unit in units %}
+  		<tr>
+	      <td>{{ unit.unit_code }}</td>
+	      <td>{{ unit.property }}</td>
+	      <td>{{ unit.rental_rate }}</td>
+	      <td>{{ unit.recurrent_charges }}</td>
+	      <td>{{ unit.lease_status }}</td>
+	      <td>{{ unit.description }}</td>
+	      <td><a href="#"><span class="badge badge-primary badge-pill">View</span></a></td>
+	  	</tr>
+	{% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}

@@ -5,31 +5,25 @@
 {% block title %} | {{listing.title}} {% endblock %}
 
 {% block content %}
-
-<section id="showcase-inner" class="py-5 text-white">
-        <div class="container">
-          <div class="row text-center">
-            <div class="col-md-12">
-              <h1 class="display-4">{{ listing.title }}</h1>
-              <p class="lead">
-                <i class="fas fa-map-marker"></i>{{ listing.city }} {{listing.state}}, {{listing.zipcode}}</p>
-            </div>
-          </div>
-        </div>
-      </section>
     
       <!-- Breadcrumb -->
       <section id="bc" class="mt-3">
-        <div class="container">
+        <div class="container" style="margin-top: 150px;">
           <nav>
             <ol class="breadcrumb">
               <li class="breadcrumb-item">
-                <a href="{% url 'index' %}">Home</a>
+                <a href="{% url '/' %}" style="color: black; font-family: 'JetBrains Mono', monospace;"><i class="fas fa-home" style="color: black;"></i> Home </a>
               </li>
+              {% if listing.user_id == request.user.id %}
               <li class="breadcrumb-item">
-                <a href="{% url 'listings' %}">Listings</a>
+                <a href="{% url 'my_listings' %}" style="color: black; font-family: 'JetBrains Mono', monospace;"> My Featured Listings</a>
               </li>
-              <li class="breadcrumb-item active">{{listing.title}}</li>
+              {% else %}
+              <li class="breadcrumb-item">
+                <a href="{% url 'listings' %}" style="color: black; font-family: 'JetBrains Mono', monospace;">Listings</a>
+              </li>
+              {% endif %}
+              <li class="breadcrumb-item active" style="color: black; font-family: 'JetBrains Mono', monospace;">{{listing.title}}</li>
             </ol>
           </nav>
         </div>
@@ -37,9 +31,19 @@
     
 <!-- alerts -->
 {% include 'partials/_alert.html' %}
-<section id="listing" class="py-4">
+        <div class="container" style="background-color: #f9f9f9; font-family: 'JetBrains Mono', monospace;">
+          <div class="row text-center">
+            <div class="col-md-12">
+              <h4 class="display-4" style="font-weight: bolder; font-size: 25px;">{{ listing.title }}</h4>
+              <p class="lead" style="font-size: 13px;">
+                <i class="fas fa-map-marker"></i> {{ listing.town }} {{listing.address }}</p>
+            </div>
+          </div>
+        </div>
+
+
+<section id="listing" class="py-4" style="font-family: 'JetBrains Mono', monospace;">
         <div class="container">
-          <a href="{% url 'listings' %}" class="btn btn-light mb-4">Back To Listings</a>
           <div class="row">
             <div class="col-md-9">
               <!-- Home Main Image -->
@@ -95,7 +99,7 @@
                   <ul class="list-group list-group-flush">
                     <li class="list-group-item text-secondary">
                       <i class="fas fa-money-bill-alt"></i> Asking Price:
-                      <span class="float-right">${{listing.price}}</span>
+                      <span class="float-right">KES {{listing.price | intcomma }}</span>
                     </li>
                     <li class="list-group-item text-secondary">
                       <i class="fas fa-bed"></i> Bedrooms:
@@ -106,7 +110,7 @@
                       <span class="float-right">{{listing.bathrooms}}</span>
                     </li> 
                     <li class="list-group-item text-secondary">
-                      <i class="fas fa-car"></i> Garage:
+                      <i class="fas fa-car"></i> Has a garage?
                       <span class="float-right">{{listing.garage}}
                       </span>
                     </li>
@@ -120,12 +124,12 @@
                     </li>
                     <li class="list-group-item text-secondary">
                       <i class="fas fa-square"></i> Lot Size:
-                      <span class="float-right">{{listing.lot_size}}Acres
+                      <span class="float-right">{{listing.lot_size}}
                       </span>
                     </li>
                     <li class="list-group-item text-secondary">
-                      <i class="fas fa-calendar"></i> Listing Date:
-                      <span class="float-right">{{listing.list_date}}</span>
+                      <i class="fas fa-calendar"></i> Created:
+                      <span class="float-right">{{listing.listing_date | timesince }}</span>
                     </li>
                     <li class="list-group-item text-secondary"> 
                       <i class="fas fa-bed"></i> Realtor:
@@ -139,21 +143,23 @@
               </div>
     
               <!-- Description -->
-              <div class="row mb-5">
+              <div class="row mb-5" style="font-family: 'JetBrains Mono', monospace;">
                 <div class="col-md-12">
                   {{ listing.description }}
                 </div>
               </div>
             </div>
             <div class="col-md-3">
-              <div class="card mb-3">
+              <div class="card mb-3" style="background-color: #f9f9f9;">
                 <img class="card-img-top" src="{{ listing.realtor.photo.url }}" alt="Seller of the month">
                 <div class="card-body">
                   <h5 class="card-title">Property Realtor</h5>
                   <h6 class="text-secondary">{{ listing.realtor }}</h6>
                 </div>
               </div>
-              <button class="btn-primary btn-block btn-lg" data-toggle="modal" data-target="#inquiryModal">Make An Inquiry</button>
+              {% if listing.user_id != request.user.id %}
+              <button class="btn-primary btn-block btn-lg" data-toggle="modal" data-target="#inquiryModal" style="background-color: #31326f !important;">Make An Inquiry</button>
+              {% endif %}
             </div>
           </div>
         </div>
@@ -164,12 +170,12 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="inquiryModalLabel">Make An Inquiry</h5>
-              <button type="button" class="close" data-dismiss="modal">
+              <h5 class="modal-title" id="inquiryModalLabel" style="font-family: 'JetBrains Mono', monospace; font-weight: bolder;">Make An Inquiry</h5>
+              <button type="button" class="close" data-dismiss="modal" style="background-color: #31326f !important;">
                 <span>&times;</span>
               </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" style="background-color: #f9f9f9; font-family: 'JetBrains Mono', monospace;">
               <form action="{% url 'contact' %}" method="POST" >
                 {% csrf_token %}
                 {% if user.is_authenticated %}
@@ -200,7 +206,7 @@
                   <textarea name="message" class="form-control"></textarea>
                 </div>
                 <hr>
-                <input type="submit" value="Send" class="btn btn-block btn-secondary">
+                <input type="submit" value="Send" class="btn btn-block btn-secondary" style="background-color: #31326f !important;">
               </form>
             </div>
           </div>

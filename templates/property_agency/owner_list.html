@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<div align="center" style="margin-top: 150px;">
+  <h3>Owners</h3>
+  <button type=""><a href="{% url 'create_owner' %}">Create New Owner</a></button>
+<table
+  data-toggle="table"
+  data-search="true"
+  data-show-columns="true" style="margin-top: 35px;  width: 1500px; margin-left: 50px;">
+  <thead>
+    <tr class="bg-success active">
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Trading Name</th>
+      <th>Email Address</th>
+      <th>Phone</th>
+      <th>Address</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+  	{% for owner in owners %}
+  		<tr>
+	      <td>{{ owner.first_name }}</td>
+	      <td>{{ owner.last_name }}</td>
+	      <td>{{ owner.trading_name }}</td>
+	      <td>{{ owner.email }}</td>
+	      <td>{{ owner.phone }}</td>
+	      <td>{{ owner.address }}</td>
+	      <td><a href="{% url 'owner_detail' owner.id %}"><span class="badge badge-primary badge-pill">View</span></a></td>
+	  	</tr>
+	{% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}

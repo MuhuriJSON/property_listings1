@@ -6,19 +6,19 @@ from realtors.models import Realtor
 # Create your models here.
 
 class Listing(models.Model):
-    realtor = models.ForeignKey(Realtor, on_delete=models.DO_NOTHING)
+
+    user_id = models.IntegerField()
+    realtor = models.ForeignKey(Realtor, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
+    town = models.CharField(max_length=30, blank=True)
+    rent_or_sale = models.CharField(max_length=4, blank=True, default='Rent')
+    price = models.IntegerField(blank=True)
     address = models.CharField(max_length=200)
-    city = models.CharField(max_length=100)
-    state = models.CharField(max_length=100)
-    zipcode = models.CharField(max_length=20)
     description = models.TextField(blank=True)
-    price = models.IntegerField()
-    bedrooms = models.IntegerField()
-    bathrooms = models.IntegerField()
+    bedrooms = models.IntegerField(default=0)
+    bathrooms = models.IntegerField(default=0)
     garage = models.BooleanField(default=True)
-    sqft = models.IntegerField()
-    lot_size = models.DecimalField(max_digits=5, decimal_places=1)
+    sqft = models.IntegerField(blank=True)
     photo_main = models.ImageField(upload_to='photos/%Y/%m/%d')
     photo_1 = models.ImageField(upload_to='photos/%Y/%m/%d', blank=True)
     photo_2 = models.ImageField(upload_to='photos/%Y/%m/%d', blank=True)

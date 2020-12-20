@@ -1,3 +1,133 @@
+  .carousel-item {
+  height: 80vh;
+  min-height: 300px;
+  height: 500px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.carousel-caption {
+  bottom: 270px;
+}
+.carousel-caption h5 {
+  font-size: 45px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 25px;
+}
+.carousel-caption p {
+  width: 75%;
+  margin: auto;
+  font-size: 18px;
+  line-height: 1.9;
+}
+
+/*Carousel fade
+*/
+.carousel-fade .carousel-inner .item {
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: 10s;
+  transition-timing-function: ease-in-out;
+}
+
+.carousel-fade .carousel-inner .active {
+  opacity: 1;
+}
+
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+  left: 0;
+  opacity: 0;
+  z-index: 1;
+}
+
+.carousel-fade .carousel-inner .next.left,
+.carousel-fade .carousel-inner .prev.right {
+  opacity: 1;
+}
+
+.carousel-fade .carousel-control {
+  z-index: 2;
+}
+
+/*
+WHAT IS NEW IN 3.3: "Added transforms to improve carousel performance in modern browsers."
+now override the 3.3 new styles for modern browsers & apply opacity
+*/
+@media all and (transform-3d), (-webkit-transform-3d) {
+    .carousel-fade .carousel-inner > .item.next,
+    .carousel-fade .carousel-inner > .item.active.right {
+      opacity: 0;
+      -webkit-transform: translate3d(0, 0, 0);
+              transform: translate3d(0, 0, 0);
+    }
+    .carousel-fade .carousel-inner > .item.prev,
+    .carousel-fade .carousel-inner > .item.active.left {
+      opacity: 0;
+      -webkit-transform: translate3d(0, 0, 0);
+              transform: translate3d(0, 0, 0);
+    }
+    .carousel-fade .carousel-inner > .item.next.left,
+    .carousel-fade .carousel-inner > .item.prev.right,
+    .carousel-fade .carousel-inner > .item.active {
+      opacity: 1;
+      -webkit-transform: translate3d(0, 0, 0);
+              transform: translate3d(0, 0, 0);
+    }
+}
+
+
+.navbar-light .navbar-brand {
+  color: white !important;
+  font-size: 20px;
+  font-weight: bolder;
+  letter-spacing: 2px;
+
+}
+.navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
+  color: white !important;
+  font-size: 25px;
+  font-weight: bolder;
+}
+.navbar-light .navbar-nav .nav-link {
+  color: white !important;
+  font-size: 20px;
+  font-weight: bolder;
+}
+.nav-item {
+  color: white !important;
+}
+
+.navbar-toggler {
+  background: #fff;
+}
+
+.navbar-nav {
+  text-align: center;
+}
+
+.nav-link {
+  padding: .2rem 1rem;
+  color: white;
+}
+.nav-link.active, .nav-link:focus {
+  color: white;
+}
+.navbar-toggler {
+  padding: 1px 5px;
+  font-size: 18px;
+  line-height: 0.3;
+  color: white !important;
+}
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+  color: #fff;
+}
+
+
+
 .btn-secondary {
   color: #fff !important; }
 
@@ -5,17 +135,19 @@ img {
   width: 100%; }
 
 .logo {
-  width: 80px; }
+  width: 180px; }
 
 .navbar {
   opacity: 0.9;
-  text-transform: uppercase; }
+  text-transform: capitalize;
+  color: white;
+  }
 
 .social a {
   margin-right: 0.4rem; }
 
 #showcase {
-  background: url(../img/showcase.jpg) no-repeat top center fixed/cover;
+
   position: relative;
   min-height: 650px;
   color: #fff;
@@ -23,7 +155,7 @@ img {
   #showcase .home-search {
     min-height: 400px;
     position: relative;
-    border-radius: 5px; }
+    border-radius: 15px; }
   #showcase .overlay {
     content: '';
     position: absolute;
@@ -34,10 +166,9 @@ img {
     background: rgba(51, 51, 51, 0.8); }
 
 #services {
-  background: url(../img/building.jpg) no-repeat top center fixed/cover;
   min-height: 300px;
   position: relative;
-  overflow: hidden; }
+  overflow: hidden;}
   #services::before {
     content: '';
     position: absolute;
@@ -48,7 +179,6 @@ img {
     background: rgba(32, 134, 107, 0.8); }
 
 #showcase-inner {
-  background: url(../img/building.jpg) no-repeat top center fixed/cover;
   position: relative;
   overflow: hidden;
   min-height: 200px; }
@@ -94,3 +224,93 @@ img {
     font-size: 30px; }
   #showcase-inner h1 {
     font-size: 40px; } }
+
+/*footer*/
+#subscribe-footer{
+  width: 1423px; 
+  height: 100px; 
+  background: none repeat scroll 0% 0% rgb(52, 152, 219);
+}
+#subscribe-footer .container{
+  width: 1100px; 
+  margin: 0px auto;
+}
+#subscribe-footer .left {
+  float: left;
+  width: 50%;
+  text-align: left;
+}
+#subscribe-footer #right{
+  float: right;
+  width: auto;
+  text-align: right;
+}
+#subscribe-footer i {
+font-size: 90px;
+float: left;
+margin-right: 20px;
+margin-top:5px;
+color: #2980b9;
+}
+#subscribe-footer i:hover{
+color:white;
+-webkit-transition: all .8s ease 0;
+-moz-transition: all .8s ease;
+-ms-transition: all .8s ease 0;
+-o-transition: all .8s ease 0;
+transition: all .8s ease 0;
+}
+#subscribe-footer h3{
+  color: rgb(255, 255, 255); 
+  margin-bottom: 2px; 
+  font-weight: 600;
+  font-family: open sans;
+}
+#subscribe-footer p{
+  margin: 0px; 
+  line-height: 20px; 
+  color: rgb(255, 255, 255); 
+  font-weight: 300;
+  font-family: open sans;
+  font-size: 13.6px;
+}
+#subscribe-footer i.icon-chevron-right{
+  color:#2980B9;
+  font-size:97px;
+  z-index:-999;
+}
+#subscribe-footer form {
+    float: right;
+    margin: 28px;
+}
+#subscribe-footer form .inptfld {
+    font-family: Open Sans;
+    outline: medium none;
+    border: medium none;
+    font-size: 15px;
+    padding: 10px;
+    border-radius: 3px;
+    width: 250px;
+}
+#subscribe-footer form .subscribebtn {
+font-famiy: open sans;
+outline: none;
+border: none;
+padding: 10px;
+border-radius: 3px;
+color: #fff;
+background: #34495e;
+cursor: pointer;
+margin-left: 10px;
+}
+#subscribe-footer form .subscribebtn:hover {
+background: #233140;
+-webkit-transition: all .6s ease 0;
+-moz-transition: all .6s ease;
+-ms-transition: all .6s ease 0;
+-o-transition: all .6s ease 0;
+transition: all .6s ease 0;
+}
+
+
+
