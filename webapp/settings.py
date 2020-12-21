@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'clear_cache',
+    'storages',
     
     
 ]
@@ -168,6 +169,14 @@ EMAIL_PORT=587
 EMAIL_HOST_USER='jacmuhuri@gmail.com'
 EMAIL_HOST_PASSWORD='0755314313'
 EMAIL_USE_TLS=True
+
+
+AWS_ACCESS_KEY_ID ="AKIA2FKQL4O3DDPNPN6J"
+AWS_SECRET_ACCESS_KEY="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"
+AWS_STORAGE_BUCKET_NAME="grant-django-files"
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 
 
 
