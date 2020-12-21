@@ -20,7 +20,7 @@ def index(request):
 
 
 def about(request):
-    realtors=Realtor.objects.order_by('-hire_date')
+    realtors=Realtor.objects.order_by('-hire_date')[3]
 
     mvr_realtors=Realtor.objects.all().filter(is_mvr=True)
 

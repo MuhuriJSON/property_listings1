@@ -13,7 +13,7 @@ class Listing(models.Model):
     town = models.CharField(max_length=30, blank=True)
     rent_or_sale = models.CharField(max_length=4, blank=True, default='Rent')
     price = models.IntegerField(blank=True)
-    address = models.CharField(max_length=200)
+    address = models.CharField(max_length=500)
     description = models.TextField(blank=True)
     bedrooms = models.IntegerField(default=0)
     bathrooms = models.IntegerField(default=0)
