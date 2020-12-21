@@ -31,7 +31,7 @@
         <p class="mt-4" style="font-size: 15px; font-family: 'JetBrains Mono', monospace;">
         While many go house hunting, we give you the convinience of finding your prefered property right from where you sit... <br> Or are you a property developer, realtor or agent, then have your property visible to potential buyers and occupants to maintain 100% occupancy always</p>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-4" style="">
         {% if mvp_realtors %}
         {% for realtor in mvp_realtors %}
         <div class="card">
@@ -39,7 +39,7 @@
               class="card-img-top"
               src="{{realtor.photo.url }}"
               alt="Seller of the month"
-            />
+            style=""/>
         <div class="card-body">
             <h5 class="card-title">Seller Of The Month</h5>
             <h6 class="text-secondary">{{realtor.name}}</h6>
@@ -62,12 +62,12 @@
       {% if realtors %}
       {% for realtor in realtors %}
       
-      <div class="col-md-4" style="font-size: 15px; font-family: 'JetBrains Mono', monospace;">
+      <div class="col-md-4" style="font-size: 15px; font-family: 'JetBrains Mono', monospace; height: 350px !important; width: 250px !important;">
           <img
             src="{{realtor.photo.url}}"
             alt=""
             class="rounded-circle mb-3"
-          />
+          style="height: 300px; width: 250px;"/>
           <h4>{{realtor.name}}</h4>
           <p class="text-success">
             <i class="fas fa-award text-success mb-3"></i> Realtor
