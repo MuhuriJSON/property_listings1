@@ -1,5 +1,37 @@
-<!-- Footer section -->
+<style>
+    .home-newsletter {
+padding: 80px 0;
+background: #31326f;
+}
 
+.home-newsletter .single {
+max-width: 650px;
+margin: 0 auto;
+text-align: center;
+position: relative;
+z-index: 2; }
+.home-newsletter .single h2 {
+font-size: 22px;
+color: white;
+text-transform: uppercase;
+margin-bottom: 40px; }
+.home-newsletter .single .form-control {
+height: 50px;
+background: rgba(255, 255, 255, 0.6);
+border-color: transparent;
+border-radius: 20px 0 0 20px; }
+.home-newsletter .single .form-control:focus {
+box-shadow: none;
+border-color: #243c4f; }
+.home-newsletter .single .btn {
+min-height: 50px; 
+border-radius: 0 20px 20px 0;
+background: #31326f;
+color: #fff;
+}
+</style>
+
+<!-- Footer section -->
 <div class="container-fluid justify-content-center p-0 mx-0" style="font-family: 'JetBrains Mono', monospace; margin-top: 100px;">
     <div class="card py-5 border-0 px-0 mx-0">
         <div class="card-body text-center">
@@ -40,6 +72,29 @@
                 </figure>
             </div>
         </div>
+
+
+                <!-- Subscribe section -->
+        <section class="home-newsletter">
+            <div class="container">
+            <div class="row">
+            <div class="col-sm-12">
+                <div class="single">
+                    <h2>Subscribe to our Newsletter</h2>
+                <div class="input-group">
+                     <input type="email" class="form-control" placeholder="Enter your email">
+                     <span class="input-group-btn">
+                     <a href="{% url '/' %}"><button class="btn btn-theme" type="submit">Subscribe</button></a>
+                     </span>
+                      </div>
+                </div>
+            </div>
+            </div>
+            </div>
+        </section>
+
+
+
         <div class="row mb-0 mt-5 mx-4 row-2 justify-content-xl-around justify-content-sm-between">
             <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 pt-4 order-2">
                 <ul class="list-unstyled" style="font-size: 15px; font-weight: bolder;">
@@ -64,29 +119,20 @@
             <div class="col-xl-auto col-lg-6 col-md-6 pt-4 col-sm-6 my-sm-0 order-md-3 order-sm-1 d-flex">
                 <ul class="list-unstyled" style="font-size: 15px; font-weight: bolder;">
                     <li class="mt-md-0 mt-4" style="color: white;"> GRANT COURT VENTURES </li>
-                    <li>Grant Court Towers, <br>Membley Kiambu</li>
-                    <li> Email: info@grant-ventures.com</li>
+                    <li>Grant Court Towers, <br>Membley, Kiambu</li>
+                    <li>Email: info@grantcourtventures.com</li>
                     <li>Phone: +254 721576392</li>
-                    <li>www.grant-ventures.com</li>
+                    <li>www.grantcourtventures.com</li>
                 </ul>
             </div>
-            <div class="col-xl-auto text-left col-lg-4 col-md-4 col-sm-6 col-12 pt-4 my-sm-0 order-6 my-auto">
-                <div class="input-group-lg input-group mb-3 mt-md-0 mt-4"><input type="text" class="form-control" style="font-size: 15px;" placeholder="Enter e-mail address" aria-label="Recipient's username" aria-describedby="button-addon2">
-                    <div class="input-group-append"><a href="{% url '/' %}"><button  class="btn btn-success bg-primary" type="button" id="button-addon2"> <b> Subscribe For News & Updates</b></button></a></div>
-                </div>
-                <ul class="list-unstyled">
-                    <li>
-                        <p class="mb-0 pb-0 mt-5" style="font-size: 12px; text-transform: capitalize;">Follow us on social media </p>
-                    </li>
-                    <li><a class="fa fa-facebook"></a><a class="fa fa-twitter"></a><a class="fa fa-instagram"></a><a class="fa fa-linkedin"></a></li>
-                </ul>
-            </div>
-        </div>
+        </div>    
         <hr class="line">
-        <div class="row text-center py-3">
-            <div class="col">
-                <p class="text-muted" style="font-size: 12px;"><b>Copyright &copy; 2020 GRANT COURT VENTURES ALL RIGHTS RESERVED </b> </p>
+        <section>
+            <div class="row text-center py-3">
+                <div class="col">
+                    <p class="text-muted" style="font-size: 12px;"><b>Copyright &copy; 2020 GRANT COURT VENTURES ALL RIGHTS RESERVED </b> </p>
+                </div>
             </div>
-        </div>
+        </section>
     </footer>
 </div>
