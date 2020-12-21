@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -23,9 +24,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'x0ov4^!p$7^f12o=1ltd+r^$n3tlxy6l8(xyzv#4s8+4k!x!ki'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+
+
 DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'json-grant-ventures.herokuapp.com']
+
 
 
 # Application definition
@@ -171,13 +175,35 @@ EMAIL_HOST_PASSWORD='0755314313'
 EMAIL_USE_TLS=True
 
 
-AWS_ACCESS_KEY_ID ="AKIA2FKQL4O3DDPNPN6J"
-AWS_SECRET_ACCESS_KEY="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"
-AWS_STORAGE_BUCKET_NAME="grant-django-files"
-AWS_S3_FILE_OVERWRITE = False
-AWS_DEFAULT_ACL = None
-DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 
+
+# Settings for production media files in AWS S3 buckets
+
+if not DEBUG:
+    AWS_ACCESS_KEY_ID = "AKIA2FKQL4O3B266AI4M"
+    AWS_SECRET_ACCESS_KEY = "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"
+    AWS_STORAGE_BUCKET_NAME = "django-grant-files"
+
+    AWS_S3_FILE_OVERWRITE = False
+    AWS_DEFAULT_ACL = None
+
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+
+    STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+    AWS_QUERYSTRING_AUTH = False 
+    AWS_S3_CUSTOM_DOMAIN = AWS_STORAGE_BUCKET_NAME + ".s3.amazonaws.com"
+    #static media settings
+    STATIC_URL = "'https://' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/"
+
+    MEDIA_URL = STATIC_URL + "media/"
+    STATICFILES_DIRS = ( os.path.join(BASE_DIR, 'static'), )
+    STATIC_ROOT = "staticfiles"
+    ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
+    STATICFILES_FINDERS = (
+        "django.contrib.staticfiles.finders.FileSystemFinder",
+        "django.contrib.staticfiles.finders.AppDirectoriesFinder"
+    )
 
 
 import django_heroku
