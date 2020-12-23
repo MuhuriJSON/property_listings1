@@ -156,6 +156,7 @@ LOGIN_URL='login'
 LOGIN_REDIRECT_URL='/'
 
 # Settings for google-cloud media files in production
+from google.oauth2 import service_account
 
 DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
 GS_BUCKET_NAME = 'grant-court-django'
