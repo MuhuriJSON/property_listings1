@@ -101,7 +101,7 @@ def CreateListingView(request, realtor_id, *args, **kwargs):
         photo_main = request.FILES['photo_main']
 
 
-        listing = Listing(user_id=user_id, realtor=realtor, title=title,town=town, sqft=sqft, bathrooms=bathrooms, bedrooms=bedrooms, address=address, description=description,\
+        listing = Listing(user_id=user_id, realtor = Realtor.objects.get(pk=realtor_id), title=title,town=town, sqft=sqft, bathrooms=bathrooms, bedrooms=bedrooms, address=address, description=description,\
             photo_main=photo_main, price=price, rent_or_sale=rent_or_sale)
         listing.save()
         
