@@ -8,7 +8,7 @@ from realtors.models import Realtor
 class Listing(models.Model):
 
     user_id = models.IntegerField()
-    realtor = models.ForeignKey(Realtor, on_delete=models.CASCADE)
+    realtor = models.CharField(max_length=200)
     title = models.CharField(max_length=200)
     town = models.CharField(max_length=30, blank=True)
     rent_or_sale = models.CharField(max_length=4, blank=True, default='Rent')
