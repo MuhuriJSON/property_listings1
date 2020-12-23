@@ -153,17 +153,26 @@ MEDIA_URL = '/media/'
 
 
 LOGIN_URL='login'
-LOGIN_REDIRECT_URL='dashboard'
+LOGIN_REDIRECT_URL='/'
 
+# Settings for google-cloud media files in production
 
+DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+GS_BUCKET_NAME = 'grant-court-django'
+STATICFILES_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
 
+GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
+    os.path.join(BASE_DIR, 'credentials.json')
+)
 
+GS_FILE_OVERWRITE = True
 
 #messages
 from django.contrib.messages import constants as messages
 MESSAGE_TAGS={
     messages.ERROR:'danger',
 }
+
 
 #Email config
 
@@ -179,32 +188,8 @@ EMAIL_USE_TLS=True
 
 # Settings for production media files in AWS S3 buckets
 
-if not DEBUG:
-    AWS_ACCESS_KEY_ID = "AKIA2FKQL4O3B266AI4M"
-    AWS_SECRET_ACCESS_KEY = "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"
-    AWS_STORAGE_BUCKET_NAME = "django-grant-files"
-
-    AWS_S3_FILE_OVERWRITE = False
-    AWS_DEFAULT_ACL = None
-
-    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 
-    STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
-    AWS_QUERYSTRING_AUTH = False 
-    AWS_S3_CUSTOM_DOMAIN = AWS_STORAGE_BUCKET_NAME + ".s3.amazonaws.com"
-    #static media settings
-    STATIC_URL = "'https://' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/"
-
-    MEDIA_URL = STATIC_URL + "media/"
-    STATICFILES_DIRS = ( os.path.join(BASE_DIR, 'static'), )
-    STATIC_ROOT = "staticfiles"
-    ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
-    STATICFILES_FINDERS = (
-        "django.contrib.staticfiles.finders.FileSystemFinder",
-        "django.contrib.staticfiles.finders.AppDirectoriesFinder"
-    )
-
-
+# django heroku settings
 import django_heroku
 django_heroku.settings(locals())
